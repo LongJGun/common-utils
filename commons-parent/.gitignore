@@ -355,7 +355,7 @@ TSWLatexianTemp*
 luac.out
 
 # luarocks build files
-*.src.rock
+#*.src.rock
 *.zip
 *.tar.gz
 
@@ -4296,7 +4296,8 @@ data_*/
 /libraries/phpmailer/*
 /libraries/phputf8/*
 /libraries/simplepie/*
-/libraries/src/*
+# /libraries/src/*
+/libraries/*
 /libraries/vendor/*
 /libraries/classmap.php
 /libraries/cms.php
@@ -4521,7 +4522,7 @@ bin-release/
 *.sig
 
 pkg/
-src/
+# src/
 
 ### IGORPro template
 # Avoid including Experiment files: they can be created and edited locally to test the ipf files
