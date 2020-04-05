@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.longj.gun</groupId>
+    <artifactId>commons-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- TODO 自定义属性 -->
+        <!-- 指定执行主类 -->
+        <start-main-class>start.your.main.clazz</start-main-class>
+        <!-- 是否跳过生命周期的test阶段 -->
+        <skip-test>true</skip-test>
+
+
+
+        <!-- TODO 工程级别配置 -->
+        <java.version>1.8</java.version>
+        <resource.delimiter>@</resource.delimiter>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- TODO maven插件版本 -->
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+        <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
+        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
+
+        <!-- TODO 依赖包版本 -->
+        <fastjson.version>1.2.68</fastjson.version>
+        <junit.version>4.13</junit.version>
+        <junit-jupiter-engine.version>5.6.1</junit-jupiter-engine.version>
+        <junit-jupiter-api.version>5.6.1</junit-jupiter-api.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <commons-codec.version>1.14</commons-codec.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-compress.version>1.20</commons-compress.version>
+        <commons-cli.version>1.4</commons-cli.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <commons-net.version>3.6</commons-net.version>
+        <commons-pool2.version>2.8.0</commons-pool2.version>
+        <commons-csv.version>1.8</commons-csv.version>
+        <httpclient.version>4.5.12</httpclient.version>
+        <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+        <oracle-jdbc.version>12.1.0.2</oracle-jdbc.version>
+
+    </properties>
+
+    <!--  子模块  -->
+    <modules>
+        <module>commons-utils</module>
+    </modules>
+
+    <dependencyManagement>
+        <!-- TODO 依赖管理 -->
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${commons-csv.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/oracle/oracle-jdbc -->
+            <dependency>
+                <groupId>oracle</groupId>
+                <artifactId>oracle-jdbc</artifactId>
+                <version>${oracle-jdbc.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons-math3.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <version>${commons-cli.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-compress -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <!-- fastjson依赖 https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- 单元测试依赖 https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter-engine.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!-- TODO 以下是默认配置
+            ${project.basedir}：工程的根目录，如 c:\idea\project\my-maven-project
+            ${project.build.directory}：工程的输出目录，如 c:\idea\project\my-maven-project\target
+
+        <directory>${project.basedir}/target</directory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <scriptSourceDirectory>${project.basedir}/src/main/scripts</scriptSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+         -->
+        <pluginManagement>
+            <!-- TODO 插件管理 -->
+            <!-- maven插件库 https://repo.maven.apache.org/maven2/org/apache/maven/plugins/ -->
+            <plugins>
+                <!-- https://maven.apache.org/plugins/maven-clean-plugin/usage.html -->
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <!-- 跳过clean阶段
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration> -->
+                    <executions>
+                        <execution>
+                            <id>auto-clean</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-compiler-plugin/usage.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <!-- 指定JDK版本编译，如果已经配置
+                             <properties>
+                                 <maven.compiler.source>1.8</maven.compiler.source>
+                                 <maven.compiler.target>1.8</maven.compiler.target>
+                             </properties>
+                             则下面2项配置可以不用配置
+                          -->
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <!-- 下面3项，使用内存分配增强功能进行编译 -->
+                        <fork>true</fork>
+                        <meminitial>128m</meminitial>
+                        <maxmem>512m</maxmem>
+                    </configuration>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-surefire-plugin/usage.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <!-- 是否跳过生命周期test阶段，
+                             配置成true，等同于 mvn install -DskipTests=false
+                          -->
+                        <skipTests>${skip-test}</skipTests>
+                        <!-- 如果junit版本低于4.7，下面2个配置就注释掉
+                        <parallel>methods</parallel>
+                        <threadCount>10</threadCount> -->
+                    </configuration>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+                <plugin>
+                    <!-- NOTE: We don't need a groupId specification because the group is
+                        org.apache.maven.plugins ...which is assumed by default.
+                    -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>${start-main-class}</mainClass> <!-- 指定执行主类 -->
+                            </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                    <!--下面是为了使用 mvn package命令，如果不加则使用mvn assembly-->
+                    <executions>
+                        <execution>
+                            <id>make-assemble</id> <!-- 用于继承合并 -->
+                            <phase>package</phase> <!-- 绑定到打包阶段 -->
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-shade-plugin/usage.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                    <configuration>
+                        <filters>
+                            <filter>
+                                <artifact>*:*</artifact>
+                                <excludes>
+                                    <exclude>META-INF/*.SF</exclude>
+                                    <exclude>META-INF/*.DSA</exclude>
+                                    <exclude>META-INF/*.RSA</exclude>
+                                </excludes>
+                            </filter>
+                        </filters>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <!-- 默认情况下，当执行installed/deployed时候，
+                                会默认生成两个jar包，一个以-shaded结尾，
+                                这个我们可以配置更改为  -->
+                                <shadedArtifactAttached>true</shadedArtifactAttached>
+                                <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <!-- 指定执行主类 -->
+                                        <mainClass>${start-main-class}</mainClass>
+                                    </transformer>
+                                    <!-- 向资源添加内容 -->
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.handlers</resource>
+                                    </transformer>
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.schemas</resource>
+                                    </transformer>
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.tooling</resource>
+                                    </transformer>
+                                    <!-- 合并拥有序数的属性文件以解决冲突 -->
+                                    <transformer implementation="org.springframework.boot.maven.PropertiesMergingResourceTransformer">
+                                        <resource>META-INF/spring.factories</resource>
+                                    </transformer>
+                                    <!-- 在META-INF/services资源中重定位的类名并将其合并 -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                    <!-- TODO 一般不用配置 DontIncludeResourceTransformer 、IncludeResourceTransformer -->
+                                    <!-- 防止包含匹配资源 -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                        <!-- 排除文件 -->
+<!--                                        <resources>-->
+<!--                                            <resource>.txt</resource>-->
+<!--                                            <resource>READ.me</resource>-->
+<!--                                        </resources>-->
+                                    </transformer>
+                                    <!-- 从项目添加文件 -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+                                        <!-- 添加文件 -->
+<!--                                        <resource>META-INF/README</resource>-->
+<!--                                        <file>README.txt</file>-->
+                                    </transformer>
+
+                                    <!-- 防止许可证重复 -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
+                                    <!-- 准备合并的公告 -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
+                                        <addHeader>false</addHeader>
+                                    </transformer>
+                                </transformers>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-jar-plugin/usage.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <!-- 指定主类 -->
+                                <mainClass>${start-main-class}</mainClass>
+                                <!-- 添加类路径，如：Class-Path: plexus-utils-1.1.jar commons-lang-2.1.jar -->
+                                <addClasspath>true</addClasspath>
+                                <!-- 包所在目录 -->
+                                <classpathPrefix>lib/</classpathPrefix>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <!-- https://maven.apache.org/plugins/maven-dependency-plugin/usage.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                <overWriteReleases>false</overWriteReleases>
+                                <overWriteSnapshots>false</overWriteSnapshots>
+                                <overWriteIfNewer>true</overWriteIfNewer>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
