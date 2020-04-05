@@ -342,7 +342,7 @@ TSWLatexianTemp*
 
 !/var/package
 /var/package/*
-!/var/package/*.xml
+# !/var/package/*.xml
 
 
 ### LyX template
@@ -5190,8 +5190,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 #ignore all JENKINS_HOME except jobs directory, root xml config, and .gitignore file
 /*
 !/jobs
-!/.gitignore
-!/*.xml
+# !/.gitignore
+# !/*.xml
 
 #ignore all files in jobs subdirectories except for folders
 #note: git doesn't track folders, only file content
