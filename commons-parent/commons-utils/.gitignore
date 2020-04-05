@@ -1115,7 +1115,7 @@ buildNumber.properties
 *.kdb
 
 ## OSCP request data
-*.org
+#*.org
 
 ## PKCS #12
 *.p12
