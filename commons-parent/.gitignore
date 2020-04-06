@@ -5613,3 +5613,5 @@ test-results/
 *.sx32fsl
 *.wx64fsl
 *.wx32fsl
+
+!**/*/src/main/*
