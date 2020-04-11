@@ -47,12 +47,94 @@ public class TimeUtil {
     }
 
     /**
+     * 格式化时间字符串转 <code>LocalDateTime</code><br/>
+     *
+     * @param timeStr 时间字符串
+     * @param dateTimePattern 时间格式化字符串
+     * @return <code>LocalDateTime</code>
+     */
+    public static LocalDateTime timeStrToLocalDateTime(String timeStr,String dateTimePattern) {
+        Preconditions.checkArgument( StringUtils.isNotBlank( timeStr ) );
+        Preconditions.checkArgument( StringUtils.isNotBlank( dateTimePattern ) );
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(dateTimePattern);
+        return LocalDateTime.parse(timeStr, dateTimeFormatter);
+    }
+
+    /**
+     * 格式化时间字符串转 <code>LocalDate</code><br/>
+     *
+     * @param timeStr 时间字符串
+     * @param datePattern 时间格式化字符串
+     * @return <code>LocalDate</code>
+     */
+    public static LocalDate timeStrToLocalDate(String timeStr,String datePattern) {
+        Preconditions.checkArgument( StringUtils.isNotBlank( timeStr ) );
+        Preconditions.checkArgument( StringUtils.isNotBlank( datePattern ) );
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(datePattern);
+        return LocalDate.parse(timeStr, dateTimeFormatter);
+    }
+
+    /**
+     * 格式化时间字符串转 <code>LocalTime</code><br/>
+     *
+     * @param timeStr 时间字符串
+     * @param timePattern 时间格式化字符串
+     * @return <code>LocalTime</code>
+     */
+    public static LocalTime timeStrToLocalTime(String timeStr,String timePattern) {
+        Preconditions.checkArgument( StringUtils.isNotBlank( timeStr ) );
+        Preconditions.checkArgument( StringUtils.isNotBlank( timePattern ) );
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(timePattern);
+        return LocalTime.parse(timeStr, dateTimeFormatter);
+    }
+
+    /**
+     * 格式化时间字符串转时间戳（毫秒级别）<br/>
+     * <b>例如：yyyy-MM-dd HH:mm:ss</b><br/>
+     * <code>2020-04-11 20:05:40 = 1586606740000</code>
+     *
+     * @param timeStr 时间字符串
+     * @param dateTimePattern 时间格式化字符串
+     * @return Long 时间戳
+     */
+    public static Long timeStrToTimestampOfMilli(String timeStr,String dateTimePattern) {
+        Preconditions.checkArgument( StringUtils.isNotBlank( timeStr ) );
+        Preconditions.checkArgument( StringUtils.isNotBlank( dateTimePattern ) );
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(dateTimePattern);
+        LocalDateTime parse = LocalDateTime.parse( timeStr, dateTimeFormatter );
+        return parse.atZone(DEFAULT_ZONE).toInstant().toEpochMilli();
+    }
+
+    /**
+     * 格式化时间字符串转时间戳（秒级别）<br/>
+     * <b>例如：yyyy-MM-dd HH:mm:ss</b><br/>
+     * <code>2020-04-11 20:05:40 = 1586606740</code>
+     *
+     * @param timeStr 时间字符串
+     * @param dateTimePattern 时间格式化字符串
+     * @return Long 时间戳
+     */
+    public static Long timeStrToTimestampOfSecond(String timeStr,String dateTimePattern) {
+        Preconditions.checkArgument( StringUtils.isNotBlank( timeStr ) );
+        Preconditions.checkArgument( StringUtils.isNotBlank( dateTimePattern ) );
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(dateTimePattern);
+        LocalDateTime parse = LocalDateTime.parse( timeStr, dateTimeFormatter );
+        return parse.atZone(DEFAULT_ZONE).toInstant().getEpochSecond();
+    }
+
+
+    /**
      * 时间戳（毫秒）转字符串<br/>
      * 例如：1586581882256
      *
-     * @param timestamp
-     * @param dateTimePattern
-     * @return
+     * @param timestamp 时间戳
+     * @param dateTimePattern 时间格式化字符串
+     * @return 时间字符串
      */
     public static String timestampOfMilli2String(long timestamp,String dateTimePattern){
 
@@ -67,8 +149,8 @@ public class TimeUtil {
      * 时间戳（毫秒）转字符串（默认格式 <code>yyyy-MM-dd HH:mm:ss</code>）<br/>
      * 例如：1586581882256
      *
-     * @param timestamp
-     * @return
+     * @param timestamp 时间戳
+     * @return 时间字符串
      */
     public static String timestampOfMilli2String(long timestamp){
         Preconditions.checkArgument( timestamp > 0L );
@@ -80,9 +162,9 @@ public class TimeUtil {
      * 时间戳（秒）转字符串<br/>
      * 例如：1586581882
      *
-     * @param timestamp
-     * @param dateTimePattern
-     * @return
+     * @param timestamp 时间戳
+     * @param dateTimePattern 时间格式化字符串
+     * @return 时间字符串
      */
     public static String timestampOfSecond2String(long timestamp,String dateTimePattern){
 
@@ -97,8 +179,8 @@ public class TimeUtil {
      * 时间戳（秒）转字符串（默认格式 <code>yyyy-MM-dd HH:mm:ss</code>）<br/>
      * 例如：1586581882
      *
-     * @param timestamp
-     * @return
+     * @param timestamp 时间戳
+     * @return 时间字符串
      */
     public static String timestampOfSecond2String(long timestamp){
         Preconditions.checkArgument( timestamp > 0L );
@@ -109,7 +191,7 @@ public class TimeUtil {
     /**
      * 获取当前时间戳（毫秒级别）
      *
-     * @return
+     * @return 当前时间戳
      */
     public static long getCurrentTimestampOfMilli(){
         return Timestamp.valueOf(LocalDateTime.now( DEFAULT_CLOCK )).toInstant().toEpochMilli();
@@ -118,7 +200,7 @@ public class TimeUtil {
     /**
      * 获取当前时间戳（秒级别）
      *
-     * @return
+     * @return 当前时间戳
      */
     public static long getCurrentTimestampOfSecond(){
         return Timestamp.valueOf(LocalDateTime.now( DEFAULT_CLOCK )).toInstant().getEpochSecond();
@@ -127,7 +209,7 @@ public class TimeUtil {
     /**
      * 获取当前日期时间（默认格式 <code>yyyy-MM-dd HH:mm:ss</code>）
      *
-     * @return
+     * @return 当前日期时间
      */
     public static String getCurrentDateTime(){
         return getCurrentDateTime(DEFAULT_DATETIME_PATTERN);
@@ -136,8 +218,8 @@ public class TimeUtil {
     /**
      * 获取当前日期时间
      *
-     * @param dateTimePattern
-     * @return
+     * @param dateTimePattern 时间格式化字符串
+     * @return 当前日期时间
      */
     public static String getCurrentDateTime(String dateTimePattern){
 
@@ -150,7 +232,7 @@ public class TimeUtil {
     /**
      * 获取当前日期（默认格式 <code>yyyy-MM-dd</code>）
      *
-     * @return
+     * @return 当前日期
      */
     public static String getCurrentDate(){
         return getCurrentDate( DEFAULT_DATE_PATTERN );
@@ -159,8 +241,8 @@ public class TimeUtil {
     /**
      * 获取当前日期
      *
-     * @param datePattern
-     * @return
+     * @param datePattern 时间格式化字符串
+     * @return 当前日期
      */
     public static String getCurrentDate(String datePattern){
 
@@ -172,7 +254,7 @@ public class TimeUtil {
     /**
      * 获取当前时间（默认格式 <code>HH:mm:ss</code>）
      *
-     * @return
+     * @return 当前时间
      */
     public static String getCurrentTime(){
         return getCurrentTime( DEFAULT_TIME_PATTERN );
@@ -181,8 +263,8 @@ public class TimeUtil {
     /**
      * 获取当前时间
      *
-     * @param timePattern
-     * @return
+     * @param timePattern 时间格式化字符串
+     * @return 当前时间
      */
     public static String getCurrentTime(String timePattern){
 
