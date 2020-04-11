@@ -56,6 +56,7 @@
         <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
         <oracle-jdbc.version>12.1.0.2</oracle-jdbc.version>
         <guava.version>28.2-jre</guava.version>
+        <jsch.version>0.1.55</jsch.version>
 
     </properties>
 
@@ -67,6 +68,12 @@
     <dependencyManagement>
         <!-- TODO 依赖管理 -->
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>

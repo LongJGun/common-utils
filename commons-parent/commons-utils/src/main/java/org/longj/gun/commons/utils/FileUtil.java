@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 
 /**
- *
+ * 文件相关工具类
  *
  * @date 2020/04/05 22:02
  * @author LongJ
