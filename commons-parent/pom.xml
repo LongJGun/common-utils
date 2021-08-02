@@ -46,7 +46,7 @@
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.14</commons-codec.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-compress.version>1.20</commons-compress.version>
+        <commons-compress.version>1.21</commons-compress.version>
         <commons-cli.version>1.4</commons-cli.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <commons-net.version>3.6</commons-net.version>
