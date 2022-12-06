@@ -49,7 +49,7 @@
         <commons-compress.version>1.20</commons-compress.version>
         <commons-cli.version>1.4</commons-cli.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <commons-net.version>3.6</commons-net.version>
+        <commons-net.version>3.9.0</commons-net.version>
         <commons-pool2.version>2.8.0</commons-pool2.version>
         <commons-csv.version>1.8</commons-csv.version>
         <httpclient.version>4.5.12</httpclient.version>
